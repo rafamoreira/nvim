@@ -21,7 +21,6 @@ vim.g.maplocalleader = " "
 -- 3. Setup lazy and tell it to load the `lua/plugins/` directory
 require("lazy").setup("plugins")
 
-
 -- Load options, keymaps, autocmds first
 -- require("config.options")
 -- require("config.keymaps")
