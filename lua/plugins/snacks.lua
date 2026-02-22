@@ -4,9 +4,10 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    animate = { enabled = false },
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
-    explorer = { enabled = true },
+    dashboard = { enabled = false },
+    explorer = { enabled = false },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = {
@@ -36,8 +37,6 @@ return {
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-    { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-    { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     -- git
@@ -67,6 +66,8 @@ return {
     { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
     { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+    { "<leader>sf", function() Snacks.picker.files() end, desc = "Find Files" },
+    { "<leader>fG", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
     { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
     { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
@@ -125,6 +126,7 @@ return {
     }
   },
   init = function()
+    vim.g.snacks_animate = false, -- disable all animations
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
       callback = function()
