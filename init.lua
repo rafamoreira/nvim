@@ -22,7 +22,7 @@ vim.g.maplocalleader = " "
 require("lazy").setup("plugins")
 
 -- Load options, keymaps, autocmds first
--- require("config.options")
+require("config.options")
 -- require("config.keymaps")
 -- require("config.autocmds")
 
