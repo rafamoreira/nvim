@@ -1,13 +1,17 @@
+local is_nixos = vim.fn.filereadable("/etc/NIXOS") == 1
+
 return {
   -- Mason: portable LSP/formatter/linter installer
   {
     "mason-org/mason.nvim",
+    enabled = not is_nixos,
     opts = {},
   },
 
   -- Bridge between mason and lspconfig — auto-installs and enables servers
   {
     "mason-org/mason-lspconfig.nvim",
+    enabled = not is_nixos,
     dependencies = {
       "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
